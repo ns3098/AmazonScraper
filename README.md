@@ -11,7 +11,7 @@ A Scraper built using scrapy module for scrapping Amazon products data.
 - Product Brand
 - Product Colour
 - Check if Product is In Stock
-
+> Check the data folder for sample output.
 ## How to Run
 
 1. Download the zip file and extract it in a directory or clone the repository.
