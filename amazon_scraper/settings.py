@@ -7,7 +7,7 @@
 #     https://doc.scrapy.org/en/latest/topics/settings.html
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
-
+LOG_LEVEL = 'INFO'
 BOT_NAME = 'amazon_scraper'
 
 SPIDER_MODULES = ['amazon_scraper.spiders']
