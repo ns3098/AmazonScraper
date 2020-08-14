@@ -26,22 +26,14 @@ class AmazonScraper(scrapy.Spider):
 
         self.no_of_pages -= 1
 
-        # print(response.text)
-
         products = response.xpath("//a[@class='a-link-normal a-text-normal']").xpath("@href").getall()
 
-        # print(len(products))
 
         for product in products:
             final_url = response.urljoin(product)
             yield scrapy.Request(url=final_url, callback = self.parse_product, headers = self.headers)
-            # break
-            # print(final_url)
 
-        # print(response.body)
-        # title = response.xpath("//span[@class='a-size-medium a-color-base a-text-normal']//text()").getall()
-        # title = response.css('span').getall()
-        # print(title)
+
 
         if(self.no_of_pages > 0):
             next_page_url = response.xpath("//ul[@class='a-pagination']/li[@class='a-last']/a").xpath("@href").get()
@@ -71,9 +63,6 @@ class AmazonScraper(scrapy.Spider):
         for description_temp in description_raw:
             description.append(description_temp.strip())
 
-        #print(title, brand, rating, price, colour, instock, img_url)
-        # print(final_review)
-        # print(reviews)
-        # print(description)
+
 
         yield Product_Scrapper(title = title.strip(), brand = brand.strip(), rating = rating.strip(), price = price.strip(), colour = colour.strip(), instock = instock, description = description, image_urls = [img_url])
